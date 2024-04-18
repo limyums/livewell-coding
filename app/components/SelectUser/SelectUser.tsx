@@ -13,7 +13,7 @@ export default function SelectUser({ isDB }: Props) {
     if (isDB) {
       //fetcha Data();
     }
-  }, []);
+  }, [isDB]);
 
   const handleSaveUser = (user: User) => {
     sessionStorage.setItem("currentUser", JSON.stringify(user));
@@ -26,8 +26,8 @@ export default function SelectUser({ isDB }: Props) {
         <></>
       ) : (
         <>
-          {users.map((user) => (
-            <a href="/chat">
+          {users.map((user, index) => (
+            <a href="/chat" key={`${index}-${user.id}`}>
               <button
                 type="button"
                 className="btn-lg btn-blue"

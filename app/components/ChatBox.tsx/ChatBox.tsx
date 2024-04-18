@@ -4,7 +4,6 @@ import { Message, User } from "@/type/type";
 import "@/app/chat/chat.scss";
 import { ChevronLeft, Paperclip } from "lucide-react";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
-import { messages } from "@/app/data";
 import Image from "next/image";
 
 type Props = {
@@ -19,7 +18,7 @@ export default function ChatBox({
   currentUser,
   setSelectedUser,
 }: Props) {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messagArray, setMessages] = useState<Message[]>([]);
   const [message, setMessage] = useState<string>("");
   const [filteredMessages, setFilteredMessage] = useState<Message[]>();
   const contentRef = useRef<HTMLDivElement>(null);
@@ -45,17 +44,30 @@ export default function ChatBox({
       setMessages([]);
     }
   }, []);
+
   useEffect(() => {
-    filteringMessage();
-  }, [messages]);
+    if (!messagArray) return;
+
+    let tmpMessage = messagArray.filter(
+      (message) =>
+        (message.senderId === selectedUser.id &&
+          message.receiverId === currentUser.id) ||
+        (message.senderId === currentUser.id &&
+          message.receiverId === selectedUser.id)
+    );
+
+    setFilteredMessage(tmpMessage);
+  }, [messagArray, currentUser, selectedUser]);
+
   useEffect(() => {
     scrollToBottom();
   }, [filteredMessages]);
 
   //get message only currentUser and selectedUser
   const filteringMessage = () => {
-    if (!messages) return;
-    let tmpMessage = messages.filter(
+    if (!messagArray) return;
+
+    let tmpMessage = messagArray.filter(
       (message) =>
         (message.senderId === selectedUser.id &&
           message.receiverId === currentUser.id) ||
@@ -70,7 +82,7 @@ export default function ChatBox({
   const handleKeyPress = (e: any) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      messages.push({
+      messagArray.push({
         id: `message_${Math.random()}`,
         senderId: currentUser.id,
         receiverId: selectedUser.id,
@@ -79,7 +91,7 @@ export default function ChatBox({
         created_at: new Date(),
       });
       //save the message in localStorage
-      localStorage.setItem("messages", JSON.stringify(messages));
+      localStorage.setItem("messages", JSON.stringify(messagArray));
       setMessage("");
       filteringMessage();
     }
