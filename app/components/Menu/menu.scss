@@ -1,0 +1,25 @@
+@import "@/app/globals.scss";
+.menu {
+  display: flex;
+  padding: 1rem;
+  justify-content: space-between;
+  background-color: $primary-color;
+  padding: 1rem 5rem;
+
+  img {
+    width: 150px;
+    height: auto;
+  }
+  &-currentUser {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    img {
+      width: 50px;
+      border-radius: 50%;
+    }
+    .logout:hover {
+      text-decoration: underline;
+    }
+  }
+}

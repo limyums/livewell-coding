@@ -1,0 +1,76 @@
+@import "@/app/globals.scss";
+
+.chat {
+  padding: 1rem 5rem;
+}
+
+.chatlist {
+  li {
+    border: 1px solid $primary-color;
+    padding: 1rem;
+    label {
+      font-weight: bold;
+    }
+    p {
+      font-size: 0.8rem;
+    }
+  }
+  li:hover {
+    background-color: rgba($primary-color, 0.5);
+    cursor: pointer;
+  }
+}
+
+.chatbox {
+  border: 1px $primary-color solid;
+  &-content {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 0.5rem;
+    height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    &-sent {
+      max-width: 90%;
+      text-align: right;
+      background-color: $light-blue;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      margin-left: auto;
+      word-wrap: break-word;
+    }
+    &-received {
+      display: flex;
+      align-items: flex-end;
+      gap: 1rem;
+      margin-right: auto;
+      img {
+        border-radius: 10px;
+      }
+      label {
+        font-size: 0.8rem;
+      }
+      p {
+        background-color: $highlight-blue;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        word-wrap: break-word;
+        width: fit-content;
+        max-width: 250px;
+      }
+    }
+  }
+  &-input {
+    padding: 0 1rem 0 2rem;
+    border-top: 1px $primary-color solid;
+    display: flex;
+    height: 20vh;
+    align-items: center;
+    gap: 1rem;
+    textarea {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@import "./globals.scss";
+button {
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+button:hover {
+  border: none;
+  cursor: pointer;
+}
+.btn-lg {
+  padding: 1rem 1.5rem;
+}
+.btn-md {
+  padding: 0.5rem 1rem;
+}
+
+.btn-sm {
+  padding: 0.3rem 0.5rem;
+}
+
+.btn-black {
+  background-color: $text;
+  color: white;
+}
+.btn-black:hover {
+  background-color: $text;
+  color: white;
+}
+
+.btn-blue {
+  background-color: $blue;
+  color: $text;
+}
+.btn-blue:hover {
+  background-color: $highlight-blue;
+  color: white;
+}
+
+.btn-trans {
+  background-color: transparent;
+  color: $text;
+}
