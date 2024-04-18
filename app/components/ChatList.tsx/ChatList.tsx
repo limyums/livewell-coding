@@ -32,11 +32,6 @@ export default function ChatList({ setSelectedUser, currentUser }: Props) {
 
   //making chat list when Message loaded
   useEffect(() => {
-    makingChatList();
-  }, [messages]);
-
-  //get ChatList by User
-  const makingChatList = () => {
     if (!messages) return;
     // step 1 : get current user Message
     let tmpMessage = messages.filter(
@@ -73,7 +68,7 @@ export default function ChatList({ setSelectedUser, currentUser }: Props) {
       return chatListItem;
     });
     setChatList(tmpList);
-  };
+  }, [messages, currentUser]);
 
   const openExistChat = (chatList: UserChatList) => {
     if (chatList.senderUser && chatList.senderUser.id != currentUser.id) {
@@ -113,9 +108,10 @@ export default function ChatList({ setSelectedUser, currentUser }: Props) {
           {currentUser.isDoctor ? (
             <>
               {users.map(
-                (user) =>
+                (user, index) =>
                   user.id != currentUser.id && (
                     <button
+                      key={`${index}-${user.id}`}
                       type="button"
                       className="btn-lg btn-blue"
                       onClick={() => {
@@ -131,10 +127,11 @@ export default function ChatList({ setSelectedUser, currentUser }: Props) {
           ) : (
             <>
               {users.map(
-                (user) =>
+                (user, index) =>
                   user.id != currentUser.id &&
                   user.isDoctor && (
                     <button
+                      key={`${index}-${user.id}`}
                       type="button"
                       className="btn-lg btn-blue"
                       onClick={() => {
