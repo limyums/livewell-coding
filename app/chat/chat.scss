@@ -74,3 +74,39 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  .chat {
+    padding: 1rem;
+  }
+  .chatlist {
+    li {
+      p {
+        max-width: 90%;
+        word-wrap: break-word;
+      }
+    }
+  }
+
+  .chatbox {
+    &-content {
+      height: 40vh;
+      &-sent {
+        padding: 0.3rem 0.5rem;
+      }
+      &-received {
+        p {
+          padding: 0.3rem 0.5rem;
+        }
+      }
+    }
+    &-input {
+      padding: 0 1rem 0 1rem;
+      height: 20vh;
+
+      textarea {
+        height: 80%;
+      }
+    }
+  }
+}
