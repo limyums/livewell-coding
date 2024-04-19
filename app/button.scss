@@ -24,7 +24,7 @@ button:hover {
   color: white;
 }
 .btn-black:hover {
-  background-color: $text;
+  background-color: rgba($text, 0.5);
   color: white;
 }
 
