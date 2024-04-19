@@ -2,7 +2,6 @@ export interface User {
   id: string;
   name: string;
   avatar_url: string;
-  messageId: string[];
   isDoctor: boolean;
 }
 
@@ -13,6 +12,12 @@ export interface Message {
   message: string;
   image_url: string;
   created_at: Date;
+}
+
+export interface NewMessage {
+  senderId: string;
+  receiverId: string;
+  message: string;
 }
 
 export interface ChatList {

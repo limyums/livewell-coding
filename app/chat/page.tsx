@@ -3,8 +3,8 @@
 import { User } from "@/type/type";
 import { useEffect, useState } from "react";
 import "./chat.scss";
-import ChatList from "../components/ChatList.tsx/ChatList";
-import ChatBox from "../components/ChatBox.tsx/ChatBox";
+import ChatList from "../../components/ChatList/ChatList";
+import ChatBox from "../../components/ChatBox/ChatBox";
 const BASE_CLASS = "chat";
 
 export default function Chat() {
