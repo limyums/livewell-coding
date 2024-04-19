@@ -18,6 +18,9 @@ export default function SelectUser({ isDB }: Props) {
   const handleSaveUser = (user: User) => {
     sessionStorage.setItem("currentUser", JSON.stringify(user));
   };
+  const handleFlushLocal = () => {
+    localStorage.clear();
+  };
 
   return (
     <div className={BASE_CLASS}>
@@ -39,6 +42,13 @@ export default function SelectUser({ isDB }: Props) {
               </button>
             </a>
           ))}
+          <button
+            type="button"
+            className="btn-lg btn-black"
+            onClick={handleFlushLocal}
+          >
+            Flush Local Storage
+          </button>
         </>
       )}
     </div>

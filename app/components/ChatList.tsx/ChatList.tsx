@@ -39,6 +39,13 @@ export default function ChatList({ setSelectedUser, currentUser }: Props) {
         message.receiverId === currentUser.id ||
         message.senderId === currentUser.id
     );
+
+    tmpMessage.sort((a: Message, b: Message) => {
+      let aTime = new Date(a.created_at);
+      let bTime = new Date(b.created_at);
+      return bTime.getTime() - aTime.getTime();
+    });
+
     // step 2 : remove duplicated message
     const uniqueMessages = new Set();
     let tmpMessageList = tmpMessage.filter((message) => {
