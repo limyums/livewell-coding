@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import SelectUser from "./components/SelectUser/SelectUser";
+import SelectUser from "../components/SelectUser/SelectUser";
 const BASE_CLASS = "home";
 export default function Page() {
   const [isDB, setIsDB] = useState<boolean>(false);
@@ -36,6 +36,7 @@ export default function Page() {
             type="button"
             className="btn-lg btn-blue"
             onClick={() => {
+              setIsSelect(true);
               setIsDB(true);
             }}
           >
